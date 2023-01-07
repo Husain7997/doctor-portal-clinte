@@ -7,7 +7,7 @@ const MyAppointments = () => {
     const { user } = useContext(AuthContext)
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: bookings =[], isLoading } = useQuery({
+    const { data: bookings =[] } = useQuery({
         queryKey: ['bookings', user.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -19,9 +19,7 @@ const MyAppointments = () => {
             return data
         }
     })
-    if (isLoading) {
-        <Loading></Loading>
-    }
+    
     return (
         <div>
             <h3 className='text-3xl my-8'>MyAppointment</h3>
@@ -41,7 +39,7 @@ const MyAppointments = () => {
                     <tbody>
 
                         {
-                            bookings.map((booking, i) => <tr>
+                            Array.from(bookings).map((booking, i) => <tr key={i}>
                                 <th>{i+1}</th>
                                 <th>{booking.name}</th>
                                 <th>{booking.treatment}</th>

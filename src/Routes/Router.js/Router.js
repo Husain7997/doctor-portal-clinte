@@ -4,10 +4,12 @@ import Main from "../../Layout/Main/Main"
 import Appointment from "../../pages/Appointment/Appointment/Appointment";
 // import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import MyAppointments from "../../pages/Dashboard/MyAppointment/MyAppointments";
+import Users from "../../pages/Dashboard/Users/Users";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Login/Register";
 import PageNotFounde from "../../pages/PageNotFounde/PageNotFounde";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
  const router = createBrowserRouter([
     {
@@ -49,6 +51,10 @@ children:[
 {
     path:'/dashboard',
 element: <MyAppointments></MyAppointments>
+},
+{
+    path:'/dashboard/users',
+    element: <AdminRoute><Users></Users></AdminRoute>
 }
 ]
     }
